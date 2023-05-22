@@ -1,0 +1,85 @@
+﻿body {
+    text-align: center;
+    margin: 0px auto;
+    width: 50%;
+    display: block;
+    padding: 10% 0;
+}
+
+
+/* Bordered form */
+form {
+    border: 3px solid #f1f1f1;
+    max-width: 600px ;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.alert {
+    border-radius: 2rem;
+    padding: 2rem;
+    color: white;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.alert-success {
+    background: rgb(3, 159, 37);
+}
+
+.alert-danger {
+    background: #a10505;
+}
+/* Set a style for all buttons */
+.button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.LogoutButton {
+    background-color: darkred;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Add a hover effect for buttons */
+.button:hover {
+    opacity: 0.8;
+}   
+
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+}
+
+#header {
+    border-radius: 15px;
+    height: 60px;
+    margin: 0px auto;
+    border: 1px solid #73ad21;
+    background-color: #f0f0f0;
+    -webkit-text-fill-color: #a4a400;
+}
+
+#addFieldP, #updateFieldP, #removeFieldP, #addFieldU, #updateFieldU, #removeFieldU, #up_info_form,
+#paidF, #StatusCount, #CategoryCount, #seeSpecificUserPack, #Packclassified #statusTBInfo {
+    display: none;
+}

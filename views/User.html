@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="/">
+    <input type="submit" alt="submit" value="Logout" id="logoutButton" class="LogoutButton">
+</a>
+<h2 id="header">Welcome Mr.{{values.costumer.Fname}}</h2>
+<br />
+<br />
+<!--  Search for Package-->
+<h2 id="header">Packege Search</h2>
+<div class="container">
+    <input type="submit" alt="submit" value="Get All Package" id="FindPackageButton" class="button" onclick="getUserCostumerPackage(`{{values.costumer.id}}`)">
+    <div id="userPackagesInfo"></div>
+</div>
+<!--  Send/receive package-->
+<h2 id="header">Send/Receive package requests</h2>
+<div class="container">
+    <form id="RequestForm" method="post" action="/User/{{values.costumer.id}}">
+
+        <label for="WeightRS"><b>Weight: </b></label>
+        <input type="text" placeholder="Enter the Weight of the package For requsting a package" name="WeightRS" required>
+
+        <label for="DimensionsRS"><b>Dimensions: </b></label>
+        <input type="text" placeholder="Enter the Dimensions of the package For requsting a package" name="DimensionsRS" required />
+
+        <label for="locationName"><b>location Name </b></label>
+        <input type="text" placeholder="Enter the location Name for requsting package" name="locationName" required>
+
+        <p>Choose the right Status: </p>
+        <input type="radio" id="Sending" name="request_type" value="Sending Package" required>
+        <label for="Sendings">Sending Package<br></label><br>
+        <input type="radio" id="Receiving" name="request_type" value="Receiving Package" required>
+        <label for="Receiving">Receiving Package<br></label><br>
+
+        <input type="submit" alt="submit" value="Send Request" class="button" onclick="sendRequest()">
+
+    </form>
+</div>
+<!--  Update personal information-->
+<h2 id="header">Update personal information</h2>
+<div class="container">
+
+    <form id="up_User_info_form" method="post" action="/User/{{values.costumer.id}}">
+
+        <label for="psw_up"><b>Password: </b></label>
+        <input type="text" placeholder="Enter Password For updating" name="psw_up" required>
+
+
+        <label for="email_up"><b>Email: </b></label><br /><br />
+        <input type="email" placeholder="Enter Email For updating" name="email_up"><br /><br />
+
+
+        <label for="mob_up"><b>Mobile: </b></label>
+        <input type="text" placeholder="Enter Mobile For updating" name="mob_up">
+
+        <input type="submit" alt="submit" value="Update Information" class="button" onclick="updateUserInfoU(`{{values.costumer.id}}`)">
+
+    </form>
+</div>
+<!-- Do Payment-->
+<h2 id="header">Payment</h2>
+<div class="container">
+    <form id="PaymentForm" action="/User/{{values.costumer.id}}" method="post">
+
+        <label for="payID"><b>PackageID: </b></label>
+        <input type="text" placeholder="Enter PackageID For paying" name="payID">
+        <input type="submit" alt="submit" value="Do Payment" class="button" onclick="doPayment(`{{values.costumer.id}}`)">
+
+    </form>
+</div>
+<!-- Traceback Package (status)-->
+<h2 id="header">Search for Package Using status</h2>
+<div class="container">
+    <form id="CostumerTracebackForm_" method="post" action="/User/{{values.costumer.id}}">
+        <p>Choose the right Status: </p>
+        <input type="radio" id="in transit_" name="statusTB_" value="in transit" required>
+        <label for="in transit_">in transit<br></label>
+        <br>
+        <input type="radio" id="delivered_" name="statusTB_" value="delivered" required>
+        <label for="delivered_">delivered<br></label>
+        <br>
+        <input type="radio" id="lost_" name="statusTB_" value="lost" required>
+        <label for="lost_">lost<br><br></label>
+        <input type="radio" id="damaged_" name="statusTB_" value="damaged" required>
+        <label for="damaged_">damaged</label>
+
+        <input type="submit" alt="submit" value="Search for Packages" class="button" onclick="costumerTraceback_(`{{values.costumer.id}}`)">
+        <br />
+    </form>
+    <div id="statusTBInfo_"></div>
+</div>
+    {% endblock %}

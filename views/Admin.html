@@ -1,0 +1,383 @@
+﻿{% extends 'base.html' %}
+{% block content %}
+<!--  packege edit-->
+<a href="/">
+    <input type="submit" alt="submit" value="Logout" id="logoutButton" class="LogoutButton">
+</a>
+<h2 id="header">Packege info</h2>
+<div class="container">
+
+    <input type="submit" value="Add Package Option" onclick="seeAddPackage()" class="button">
+    <input type="submit" value="Edit package Option" onclick="seeUpdatePackage()" class="button">
+    <input type="submit" value="Remove Package Option" onclick="seeRemovePackage()" class="button">
+
+    <!--Adding Package info-->
+    <div id="addFieldP">
+        <form id="add_Package_form" method="post" action="/Admin">
+
+            <label for="receiverID_add"><b>receiver ID: </b></label>
+            <input type="text" placeholder="Enter receiverID For adding" name="receiverID_add" required>
+
+            <label for="senderid_add"><b>Sender ID: </b></label>
+            <input type="text" placeholder="Enter SenderID For adding" name="senderid_add" required>
+
+            <label for="Pid_add"><b>Package ID: </b></label>
+            <input type="text" placeholder="Enter PackegeID For adding" name="Pid_add" required>
+
+            <label for="Weight_add"><b>Weight: </b></label>
+            <input type="text" placeholder="Enter the Weight of the package For adding" name="Weight_add" required>
+
+            <label for="Dimensions_add"><b>Dimensions: </b></label>
+            <input type="text" placeholder="Enter the Dimensions of the package For adding" name="Dimensions_add" required>
+
+            <label for="Value_add"><b>Value: </b></label>
+            <input type="text" placeholder="Enter the Value of the package For adding" name="Value_add" required>
+
+            <label for="IA_add"><b>Insurance amount: </b></label>
+            <input type="text" placeholder="Enter the Insurance amount of the package" name="IA_add" required>
+
+            <label for="retailID_add"><b>retail ID: </b></label>
+            <input type="text" placeholder="Enter retailID For adding" name="retailID_add" required>
+
+            <label for="location_id_add"><b>location ID: </b></label>
+            <input type="text" placeholder="Enter location ID For adding" name="location_id_add" required>
+
+            <label for="schedule_number_add"><b>Schedule Number: </b></label>
+            <input type="text" placeholder="Enter Schedule Number For adding" name="schedule_number_add" required>
+
+            <label for="Expected_add"><b>Expected date for delivery: </b></label>
+            <input type="date" name="Expected_add" required>
+
+            <br>
+            <label for="Final_add"><b>Final date for delivery: </b></label>
+            <input type="date" name="Final_add" required>
+
+
+            <p>Choose the right Status: </p>
+            <input type="radio" id="in transit" name="Status_add" value="in transit" required>
+            <label for="in transit">in transit<br></label><br>
+            <input type="radio" id="delivered" name="Status_add" value="delivered" required>
+            <label for="delivered">delivered<br></label><br>
+            <input type="radio" id="lost" name="Status_add" value="lost" required>
+            <label for="lost">lost<br><br></label>
+            <input type="radio" id="damaged" name="Status_add" value="damaged" required>
+            <label for="damaged">damaged</label><br />
+
+            <p>Choose the right Category: </p>
+            <input type="radio" id="regular" name="Category_add" value="regular" required>
+            <label for="regular">regular<br></label><br>
+            <input type="radio" id="fragile" name="Category_add" value="fragile" required>
+            <label for="fragile">fragile<br></label><br>
+            <input type="radio" id="liquid" name="Category_add" value="liquid" required>
+            <label for="liquid">liquid<br><br></label>
+            <input type="radio" id="chemical" name="Category_add" value="chemical" required>
+            <label for="chemical">chemical</label>
+
+            <p>Payment: </p>
+            <input type="radio" id="Yes" name="Payment_add" value="1" required>
+            <label for="Yes">Yes</label>
+            <input type="radio" id="No" name="Payment_add" value="0" required>
+            <label for="No">No</label>
+
+            <input type="submit" name="Package_Add_button" alt="submit" value="Add Package" id="AddPackageButton" class="button" onclick="addValidationP()">
+
+        </form>
+    </div>
+
+    <!--updating Package info-->
+    <div id="updateFieldP">
+        <form id="update_Package_form" method="post" action="/Admin">
+
+            <label for="Pid_update"><b>Package ID: </b></label>
+            <input type="text" placeholder="Enter PackegeID to find the package" name="Pid_update" required>
+            <!--
+                <label for="receiverID_update"><b>receiver ID: </b></label>
+                <input type="text" placeholder="Enter receiverID For Update" name="receiverID_update" required>
+
+                <label for="senderid_update"><b>Sender ID: </b></label>
+                <input type="text" placeholder="Enter SenderID For Update" name="senderid_update" required>
+            -->
+
+            <label for="Weight_update"><b>Weight: </b></label>
+            <input type="text" placeholder="Enter the Weight of the package For Update" name="Weight_update" required>
+
+            <label for="Dimensions_update"><b>Dimensions: </b></label>
+            <input type="text" placeholder="Enter the Dimensions of the package For Update" name="Dimensions_update" required>
+
+            <label for="Value_update"><b>Value: </b></label>
+            <input type="text" placeholder="Enter the Value of the package For Update" name="Value_update" required>
+
+            <label for="IA_update"><b>Insurance amount: </b></label>
+            <input type="text" placeholder="Enter the Insurance amount of the package" name="IA_update" required>
+            <!--
+            <label for="retailID_update"><b>retail ID: </b></label>
+            <input type="text" placeholder="Enter retailID For Update" name="retailID_update" required>
+
+            <label for="location_id_update"><b>location ID: </b></label>
+            <input type="text" placeholder="Enter location ID For Update" name="location_id_update" required>
+             -->
+            <label for="Expected_update"><b>Expected date for delivery: </b></label>
+            <input type="date" name="Expected_update" required>
+
+            <br>
+            <label for="Final_update"><b>Final date for delivery: </b></label>
+            <input type="date" name="Final_update" required>
+
+
+            <p>Choose the right Status: </p>
+            <input type="radio" id="in transit" name="Status_update" value="in transit" required>
+            <label for="in transit">in transit<br></label><br>
+            <input type="radio" id="delivered" name="Status_update" value="delivered" required>
+            <label for="delivered">delivered<br></label><br>
+            <input type="radio" id="lost" name="Status_update" value="lost" required>
+            <label for="lost">lost<br><br></label>
+            <input type="radio" id="damaged" name="Status_update" value="damaged" required>
+            <label for="damaged">damaged</label><br />
+
+            <p>Choose the right Category: </p>
+            <input type="radio" id="regular" name="Category_update" value="regular" required>
+            <label for="regular">regular<br></label><br>
+            <input type="radio" id="fragile" name="Category_update" value="fragile" required>
+            <label for="fragile">fragile<br></label><br>
+            <input type="radio" id="liquid" name="Category_update" value="liquid" required>
+            <label for="liquid">liquid<br><br></label>
+            <input type="radio" id="chemical" name="Category_update" value="chemical" required>
+            <label for="chemical">chemical</label>
+
+            <p>Payment: </p>
+            <input type="radio" id="Yes" name="Payment_update" value="1" required>
+            <label for="Yes">Yes</label>
+            <input type="radio" id="No" name="Payment_update" value="0" required>
+            <label for="No">No</label>
+
+            <input type="submit" name="Package_Update_button" alt="submit" value="Update Package" id="UpdatePackageButton" class="button" onclick="updateValidation()">
+
+        </form>
+
+    </div>
+    <!--Removing package-->
+    <div id="removeFieldP">
+        <form id="delete_Package_form" method="post" action="/Admin">
+            <label for="Pid_remove"><b>Package ID: </b></label>
+            <input type="text" placeholder="Enter PackegeID For removing" name="Pid_remove" required>
+
+            <input type="submit" name="Package_Remove_button" alt="submit" value="Remove Package" id="RemevePackageButton" class="button" onclick="removeValidationP()">
+
+        </form>
+    </div>
+</div>
+<hr>
+
+<!-- user edit-->
+<h2 id="header">User info</h2>
+<div class="container">
+    <input type="submit" value="Add User Option" onclick="seeAddUser()" class="button">
+    <input type="submit" value="Edit User Option" onclick="seeUpdateUser()" class="button">
+    <input type="submit" value="Remove User Option" onclick="seeRemoveUser()" class="button">
+
+    <div id="addFieldU" method="post" action="/Admin">
+        <form id="add_User_form">
+
+            <label for="Uid_add"><b>User ID: </b></label>
+            <input type="text" placeholder="Enter UserID For adding" name="Uid_add" required>
+
+
+            <label for="fname_add"><b>First Name: </b></label>
+            <input type="text" placeholder="Enter the first name For adding" name="fname_add" required>
+
+
+            <label for="lname_add"><b>Last Name: </b></label>
+            <input type="text" placeholder="Enter the Last name For adding" name="lname_add" required>
+
+            <label for="passwordAddC"><b>Password: </b></label>
+            <input type="text" placeholder="Enter the Password" name="passwordAddC" required>
+
+            <label for="email_add"><b>Email: </b></label>
+            <input type="text" placeholder="Enter the email ( for customer )" name="email_add" required>
+
+
+            <label for="mobile_add"><b>Mobile Number: </b></label>
+            <input type="text" placeholder="Enter the mobile number ( for customer )" name="mobile_add" required>
+
+
+            <label for="salary_add"><b>Salary: </b></label>
+            <input type="text" placeholder="Enter the mobile number ( for embloyee )" name="salary_add" required>
+
+
+            <label for="eType_add"><b>Employee position: </b></label>
+            <input type="text" placeholder="Enter employee type ( for employee )" name="eType_add" required>
+
+
+        </form>
+        <input type="submit" name="employee_Add_button" alt="submit" value="Add as Employee" class="button" onclick="addValidationEmployee()">
+        <input type="submit" name="customer_Add_button" alt="submit" value="Add as Customer" class="button" onclick="addValidationCustomer()">
+    </div>
+
+    <div id="updateFieldU">
+        <form id="update_User_form" method="post" action="/Admin">
+
+            <label for="Uid_update"><b>User ID: </b></label>
+            <input type="text" placeholder="Enter UserID to find the record needed to change" name="Uid_update" required>
+
+
+            <label for="fname_update"><b>First Name: </b></label>
+            <input type="text" placeholder="Enter the first name For updating" name="fname_update" required>
+
+
+            <label for="lname_update"><b>Last Name: </b></label>
+            <input type="text" placeholder="Enter the Last name For updating" name="lname_update" required>
+
+
+            <label for="passwordUpdateC"><b>Password: </b></label>
+            <input type="text" placeholder="Enter the Password" name="passwordUpdateC" required>
+
+            <label for="email_update"><b>Email: </b></label>
+            <input type="text" placeholder="Enter the email ( for customer )" name="email_update" required>
+
+
+            <label for="mobile_update"><b>Mobile Number: </b></label>
+            <input type="text" placeholder="Enter the mobile number ( for customer )" name="mobile_update" required>
+
+
+            <label for="salary_update"><b>Salary: </b></label>
+            <input type="text" placeholder="Enter the mobile number ( for embloyee )" name="salary_update" required>
+
+
+            <label for="eType_update"><b>Employee position: </b></label>
+            <input type="text" placeholder="Enter employee type ( for employee )" name="eType_update" required>
+
+
+        </form>
+        <input type="submit" name="employee_Add_button" alt="submit" value="Update as Employee" class="button" onclick="updateValidationEmployee()">
+        <input type="submit" name="customer_Add_button" alt="submit" value="Update as Customer" class="button" onclick="updateValidationCustomer()">
+    </div>
+
+    <div id="removeFieldU">
+        <form id="delete_User_form" method="post" action="/Admin">
+            <label for="Uid_remove"><b>User ID: </b></label>
+            <input type="text" placeholder="Enter User ID For removing" name="Uid_remove" required>
+        </form>
+        <input type="submit" name="User_Remove_button" alt="submit" value="Remove User" class="button" onclick="removeValidationU()">
+    </div>
+</div>
+
+<hr>
+<h2 id="header">Report</h2>
+<!--report-->
+<div class="container">
+
+    <input type="submit" value="The Payments that have been confirmed and completed" onclick="seePaid();showAllPaid()" class="button">
+    <input type="submit" value="The List of all lost/delayed/delivered packages between 2 dates" onclick="seeStatusCount()" class="button">
+    <input type="submit" value="The List of the total number of package types ( Regular, Fragile, Liquid, Chemical ) 2 dates" onclick="seeCategoryCount()" class="button">
+    <input type="submit" value="The List of all packages information that were sent or received by a particular customer" onclick="seeSpecificUserPack()" class="button">
+    <input type="submit" value="Package Delivery Tracking based on categories, locations and status" onclick="seePackclassified()" class="button">
+
+    <div id="paidF">
+    </div>
+
+    <div id="StatusCount">
+        <div id="seeStatus">
+            <form id="seeStatusForm" method="post" action="/Admin">
+
+                <label for="seeStatusDate1"><b>Enter The First Date: </b></label>
+                <input type="date" name="seeStatusDate1" required>
+
+                <label for="seeStatusDate2"><b>Enter The Second Date: </b></label>
+                <input type="date" name="seeStatusDate2" required>
+            </form>
+            <input type="submit" name="show_Status" alt="submit" value="show Status count" class="button" onclick="showStatusCount()">
+            <div id="seeStatusInfo">
+            </div>
+        </div>
+    </div>
+
+    <div id="CategoryCount">
+        <form id="seeCategoryForm" method="post" action="/Admin">
+
+            <label for="seeCategoryDate1"><b>Enter The First Date: </b></label>
+            <input type="date" name="seeCategoryDate1" required>
+
+            <label for="seeCategoryDate2"><b>Enter The Second Date: </b></label>
+            <input type="date" name="seeCategoryDate2" required>
+        </form>
+        <input type="submit" name="show_Category" alt="submit" value="show Category count" class="button" onclick="showCategoryCount()">
+        <div id="seeCategoryInfo">
+        </div>
+    </div>
+
+    <div id="seeSpecificUserPack">
+        <form id="SpecificUserPackForm" method="post" action="/Admin">
+
+            <label for="SpecificUserPackID"><b>costemer ID: </b></label>
+            <input type="text" placeholder="Enter User ID For finding all packages" name="SpecificUserPackID" required>
+        </form>
+        <input type="submit" name="show_packages" alt="submit" value="show packages" class="button" onclick="showSpecificUserPack()">
+        <div id="showingUserPackInfo">
+        </div>
+
+    </div>
+
+    <div id="Packclassified">
+        <form id="PackclassifiedForm" method="post" action="/Admin">
+
+
+            <label for="classLocation"><b>Location: </b></label>
+            <input type="text" placeholder="Enter the city name For finding all packages" name="classLocation" required>
+
+            <p>Choose the right Status: </p>
+            <input type="radio" id="in transit" name="classStatus" value="in transit" required>
+            <label for="in transit">in transit<br></label><br>
+            <input type="radio" id="delivered" name="classStatus" value="delivered" required>
+            <label for="delivered">delivered<br></label><br>
+            <input type="radio" id="lost" name="classStatus" value="lost" required>
+            <label for="lost">lost<br><br></label>
+            <input type="radio" id="damaged" name="classStatus" value="damaged" required>
+            <label for="damaged">damaged</label><br />
+
+            <p>Choose the right Category: </p>
+            <input type="radio" id="regular" name="classCategory" value="regular" required>
+            <label for="regular">regular<br></label><br>
+            <input type="radio" id="fragile" name="classCategory" value="fragile" required>
+            <label for="fragile">fragile<br></label><br>
+            <input type="radio" id="liquid" name="classCategory" value="liquid" required>
+            <label for="liquid">liquid<br><br></label>
+            <input type="radio" id="chemical" name="classCategory" value="chemical" required>
+            <label for="chemical">chemical</label><br />
+
+
+        </form>
+        <input type="submit" name="show_packages" alt="submit" value="show classed packages" class="button" onclick="showClassPackage()">
+        <div id="PackClassifiedInfo">
+        </div>
+    </div>
+</div>
+
+<hr>
+<h2 id="header">Trace back packages</h2>
+<!--trace packege-->
+<form id="TraceBackForm" method="post" action="/Admin">
+    <label for="TraceID"><b>User ID: </b></label>
+    <input type="text" placeholder="Enter User ID For getting TraceBack history" name="TraceID" required>
+</form>
+<input type="submit" name="TraceBackAdmin" alt="submit" value="show Traceback" class="button" onclick="TraceBackAdmin()">
+<div id="TraceBackAdminInfo">
+</div>
+
+<hr>
+
+<h2 id="header">Email notification</h2>
+<!-- email notifivation-->
+<form action="/Admin" method="POST" name="EmailNotiForm">
+    ID:<br>
+    <input type="text" size="19" name="ID"><br><br>
+
+    <input type="submit" name="SendNotification" alt="submit" value="Send Notification" class="button" onclick="SendEmail()">
+</form>
+<!--
+<form id="EmailNotiForm" method="post" action="">
+    <label for="EmailNoti"><b>costemer ID: </b></label>
+    <input type="text" placeholder="Enter User ID For the notification" name="EmailNoti" required>
+
+    <input type="submit" name="show_packages" alt="submit" value="show packages" class="button">
+</form>-->
+        {% endblock %}
